@@ -15,7 +15,6 @@ rancher:
       name: ctop
       image: quay.io/vektorlab/ctop:latest
       restart: always
-      stdin_open: true
       tty: true
       volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -31,16 +30,16 @@ rancher:
       command: -d /root/data
       ports: 
       - 9000:9000
-    tor: # docker run --name tor -it -p 8118:8118 -p 9050:9050 -d -v /var/local/tor/etc:/etc -v /var/local/tor/var/lib/tor:/var/lib/tor -e TORUSER=root dperson/torproxy -b 100
-      name: tor
-      image: dperson/torproxy
-      privileged: false
-      restart: always
-      tty: true
-      command: -b 100
-      ports:
-      - 8118:8188
-      - 9050:9050
+    # tor: # docker run --name tor -it -p 8118:8118 -p 9050:9050 -d -v /var/local/tor/etc:/etc -v /var/local/tor/var/lib/tor:/var/lib/tor -e TORUSER=root dperson/torproxy -b 100
+    #   name: tor
+    #   image: dperson/torproxy
+    #   privileged: false
+    #   restart: always
+    #   tty: true
+    #   command: -b 100
+    #   ports:
+    #   - 8118:8188
+    #   - 9050:9050
     # rancher: # sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher: latest
     #   name: rancher
     #   image: rancher/rancher:latest
